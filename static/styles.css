@@ -1,0 +1,167 @@
+/* =========================
+   Theme Variables
+   ========================= */
+:root {
+    --bg-primary: #f5f7fa;
+    --bg-surface: #ffffff;
+    --text-primary: #333;
+    --text-secondary: #555;
+    --accent-primary: #ff8c1a;
+    --accent-secondary: #ff6a00;
+    --border-subtle: rgba(0, 0, 0, 0.08);
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-primary: #0f0f0f;
+        --bg-surface: #161616;
+        --text-primary: #eaeaea;
+        --text-secondary: #bdbdbd;
+        --accent-primary: #ff8c1a;
+        --accent-secondary: #ff6a00;
+        --border-subtle: rgba(255, 255, 255, 0.06);
+        --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+}
+
+/* =========================
+   Base Layout
+   ========================= */
+body {
+    background: linear-gradient(135deg, var(--bg-primary), #1c1c1c);
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.container {
+    background-color: var(--bg-surface);
+    padding: 48px;
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--border-subtle);
+    text-align: center;
+}
+
+/* =========================
+   Headings
+   ========================= */
+.heading-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.heading-text,
+.logout-header {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    margin: 0;
+}
+
+/* =========================
+   Buttons
+   ========================= */
+.login-btn,
+.logout-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    background: linear-gradient(
+        135deg,
+        var(--accent-primary),
+        var(--accent-secondary)
+    );
+    color: #0f0f0f;
+    border: none;
+    border-radius: 999px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgba(255, 140, 26, 0.35);
+}
+
+.login-btn:hover,
+.logout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 140, 26, 0.5);
+}
+
+/* =========================
+   Results / Text
+   ========================= */
+.result-text {
+    text-align: left;
+    margin-top: 24px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+/* =========================
+   Table Styling
+   ========================= */
+table {
+    width: 70%;
+    min-width: 640px;
+    margin: 28px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--bg-surface);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+}
+
+th,
+td {
+    padding: 14px 18px;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(135deg, #2a2a2a, #202020);
+    color: var(--accent-primary);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+}
+
+td {
+    color: var(--text-primary);
+    border-top: 1px solid var(--border-subtle);
+    font-size: 0.9rem;
+}
+
+tr:hover td {
+    background: rgba(255, 140, 26, 0.08);
+}
+
+/* =========================
+   Code / Token Output
+   ========================= */
+pre {
+    text-align: left;
+    background: #0f0f0f;
+    padding: 16px;
+    border-radius: 12px;
+    color: #ffb366;
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    box-shadow: inset 0 0 0 1px var(--border-subtle);
+}

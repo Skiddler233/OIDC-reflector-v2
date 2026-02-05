@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OIDC Claims</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="heading-container">
+        <h2 class="heading-text">OIDC Claims</h2>
+        <a class="logout-btn" href="/">Logout</a>
+    </div>
+
+    <div class="view-controls">
+        <a class="logout-btn {% if mode == 'short' %}active{% endif %}"
+           href="{{ url_for('results', mode='short') }}">
+            Short
+        </a>
+        <a class="logout-btn {% if mode == 'full' %}active{% endif %}"
+           href="{{ url_for('results', mode='full') }}">
+            Full
+        </a>
+        <a class="logout-btn {% if mode == 'all' %}active{% endif %}"
+           href="{{ url_for('results', mode='all') }}">
+            All
+        </a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Claim</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key, value in claims.items() %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>
+                    {% if value is mapping %}
+                        <pre>{{ value | tojson(indent=2) }}</pre>
+                    {% elif value is sequence and value is not string %}
+                        <ul>
+                            {% for item in value %}
+                                <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        {{ value if value not in [None, ''] else 'No value' }}
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>
